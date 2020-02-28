@@ -22,8 +22,10 @@ function runPomodoro(work, rest) {
     function checkWorkInterval() {
         if (mode == "work") {
             if (workTime >= 0) {
-                console.log(workTime);
+                let result = new Date(workTime * 1000).toISOString().substr(14, 5);
+                console.log(result);
                 workTime--;
+                //console.log(workTime);
             } else {
                 console.log("Break Time!");
                 mode = "rest";
@@ -35,7 +37,8 @@ function runPomodoro(work, rest) {
     function checkRestInterval() {
         if (mode == "rest") {
             if (restTime >= 0) {
-                console.log(restTime);
+                let result = new Date(restTime * 1000).toISOString().substr(14, 5);
+                console.log(result);
                 restTime--;
             } else {
                 console.log("Back To Work!");
