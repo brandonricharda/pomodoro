@@ -18,13 +18,16 @@ function runPomodoro(work, rest) {
     let workTime = work;
     let restTime = rest;
     let mode = "work";
+    let cycles = 0;
     function checkWorkInterval() {
         if (mode == "work") {
             if (workTime >= 0) {
                 console.log(workTime);
                 workTime--;
             } else {
+                console.log("Break Time!");
                 mode = "rest";
+                cycles++
                 workTime = work;
             }
         }
@@ -35,7 +38,9 @@ function runPomodoro(work, rest) {
                 console.log(restTime);
                 restTime--;
             } else {
+                console.log("Back To Work!");
                 mode = "work";
+                cycles++
                 restTime = rest;
             }
         }
