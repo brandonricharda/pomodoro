@@ -17,32 +17,36 @@ function runPomodoro(work, rest) {
     setInterval(checkRestInterval, 1000);
     let workTime = work;
     let restTime = rest;
-    let mode = "work";
+    let mode = "Work";
     let cycles = 0;
+    let clock = document.querySelector("#clock");
+    let modeSelector = document.querySelector("#mode-identifier");
+    let cycleCounter = document.querySelector("#cycle-count");
     function checkWorkInterval() {
-        if (mode == "work") {
+        if (mode == "Work") {
             if (workTime >= 0) {
                 let result = new Date(workTime * 1000).toISOString().substr(14, 5);
-                console.log(result);
+                clock.textContent = result;
+                modeSelector.textContent = mode;
+                cycleCounter.textContent = "Cycles Run: " + cycles;
                 workTime--;
-                //console.log(workTime);
             } else {
-                console.log("Break Time!");
-                mode = "rest";
+                mode = "Rest";
                 cycles++
                 workTime = work;
             }
         }
     }
     function checkRestInterval() {
-        if (mode == "rest") {
+        if (mode == "Rest") {
             if (restTime >= 0) {
                 let result = new Date(restTime * 1000).toISOString().substr(14, 5);
-                console.log(result);
+                clock.textContent = result;
+                modeSelector.textContent = mode;
+                cycleCounter.textContent = "Cycles Run: " + cycles;
                 restTime--;
             } else {
-                console.log("Back To Work!");
-                mode = "work";
+                mode = "Work";
                 cycles++
                 restTime = rest;
             }

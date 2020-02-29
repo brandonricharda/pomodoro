@@ -1,0 +1,33 @@
+#main {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas: ". center ."
+                        ". center-two ."
+                        ". center-three .";
+    justify-items: center;
+}
+
+#top-bar {
+    height: 100px;
+}
+
+#clock {
+    grid-area: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 100px;
+    line-height: 0px;
+}
+
+#mode-identifier {
+    grid-area: center-two;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 60px;
+    line-height: 0px;
+}
+
+#cycle-count {
+    grid-area: center-three;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 40px;
+    line-height: 0px;
+}
