@@ -1,6 +1,15 @@
+let pause = false;
+
+function initialize() {
+    let timeSetButton = document.querySelector("#time-set");
+    let pauseButton = document.querySelector("#time-pause");
+    timeSetButton.addEventListener('click', () => {getIntervals()});
+    pauseButton.addEventListener('click', () => {activatePause()});
+}
+
 function getIntervals() {
-    workIntervalInput = prompt("How many minutes long should the work interval be?");
-    restIntervalInput = prompt("How many minutes long should the rest interval be?");
+    workIntervalInput = prompt("How many minutes long should the WORK interval be?");
+    restIntervalInput = prompt("How many minutes long should the REST interval be?");
     workInt = parseInt(workIntervalInput);
     restInt = parseInt(restIntervalInput);
     calculatePomodoro(workInt, restInt);
@@ -10,6 +19,10 @@ function calculatePomodoro(work, rest) {
     workIntervalSec = (work * 60);
     restIntervalSec = (rest * 60);
     runPomodoro(workIntervalSec, restIntervalSec);
+}
+
+function activatePause() {
+    pause = true;
 }
 
 function runPomodoro(work, rest) {
@@ -24,13 +37,13 @@ function runPomodoro(work, rest) {
     let cycleCounter = document.querySelector("#cycle-count");
     function checkWorkInterval() {
         if (mode == "Work") {
-            if (workTime >= 0) {
+            if (workTime >= 0 && !pause) {
                 let result = new Date(workTime * 1000).toISOString().substr(14, 5);
                 clock.textContent = result;
                 modeSelector.textContent = mode;
                 cycleCounter.textContent = "Cycles Run: " + cycles;
                 workTime--;
-            } else {
+            } else if (workTime < 0 && !pause) {
                 mode = "Rest";
                 cycles++
                 workTime = work;
@@ -54,4 +67,4 @@ function runPomodoro(work, rest) {
     }
 }
 
-getIntervals() 
+initialize();
