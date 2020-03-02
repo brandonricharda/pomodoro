@@ -36,14 +36,12 @@ function calculatePomodoro(work, rest) {
 
 function activatePause() {
     pause = true;
-    let pauseButton = document.querySelector("#time-pause");
-    pauseButton.style.background = "lightgreen";
+    let modeSelector = document.querySelector("#mode-identifier");
+    modeSelector.textContent = "Paused";
 }
 
 function resume() {
     pause = false;
-    let pauseButton = document.querySelector("#time-pause");
-    pauseButton.style.background = "#BDC4A7";
 }
 
 function activateReset() {
