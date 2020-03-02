@@ -5,13 +5,20 @@
 </head>
 <body>
     <html>
-        <div id="top-bar"></div>
+        <div id="top-bar">
+            <h1>Pomodoro</h1>
+        </div>
         <div id="main">
             <h2 id="clock">00:00</h2>
-            <h3 id="mode-identifier">Mode</h3>
-            <p id="cycle-count">Cycles Run:</p>
+            <div id="mode-cycles">
+                <p id="mode-identifier">Mode</p>
+                <p id="cycle-count">Cycles Run:</p>
+            </div>
             <button id="time-set">Set Time</button>
             <button id="time-pause">Pause</button>
+            <button id="time-resume">Resume</button>
+            <button id="time-reset">Reset</button>
+            <p id="credits">By <a href="https://github.com/brandonricharda">Brandon-Richard Austin</a></p>
         </div>
         <script src="pomodoro.js"></script>
     </html>
